@@ -261,3 +261,32 @@ class BST {
 		return currentNode.value
 	}
 }
+
+
+function longestPeak(array) {
+  // Write your code here.
+	let longestLength = 0;
+	for (let i = 1; i < array.length - 1; i++){
+		const isPeak = (array[i - 1] < array[i] && array[i] > array[i + 1]);
+		if (isPeak){
+			let peakStartIdx = i - 1;
+			let peakEndIdx = i + 1;
+			while ( array[peakStartIdx] > array[peakStartIdx - 1])peakStartIdx--;
+			while ( array[peakEndIdx] > array[peakEndIdx + 1])peakEndIdx++;
+			const currentPeakLength = peakEndIdx - peakStartIdx + 1;
+			if (currentPeakLength > longestLength) longestLength = currentPeakLength;
+		}
+	}
+	return longestLength;
+}
+
+function isMonotonic(array) {
+  // Write your code here.
+	let increaseMono = true;
+	let decreaseMono = true;
+	for (let i = 1; i < array.length; i++){
+		if (array[i-1] > array[i]) increaseMono = false;
+		if (array[i-1] < array[i]) decreaseMono = false;
+	}
+	return increaseMono || decreaseMono
+}
