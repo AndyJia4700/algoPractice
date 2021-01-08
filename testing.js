@@ -290,3 +290,34 @@ function isMonotonic(array) {
 	}
 	return increaseMono || decreaseMono
 }
+
+function smallestDifference(arrayOne, arrayTwo) {
+  // Write your code here.
+	arrayOne.sort((a,b)=>a-b);
+	arrayTwo.sort((a,b)=>a-b);
+	let i = 0;
+	let j = 0;
+	let pair = [];
+	let currentNum = Infinity;
+	let smallest = Infinity;
+	while (i<arrayOne.length && j<arrayTwo.length){
+		let firstNum = arrayOne[i];
+		let secondNum = arrayTwo[j];
+		
+		if (firstNum == secondNum){
+			return [firstNum, secondNum]
+		} else if (firstNum < secondNum){
+			currentNum = secondNum - firstNum;
+			i++;
+		} else if (firstNum > secondNum){
+			currentNum = firstNum - secondNum;
+			j++;
+		}
+		
+		if (currentNum < smallest){
+			smallest = currentNum;
+			pair = [firstNum, secondNum]
+		}
+	}
+	return pair;
+}
