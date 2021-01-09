@@ -321,3 +321,28 @@ function smallestDifference(arrayOne, arrayTwo) {
 	}
 	return pair;
 }
+
+class BST {
+  constructor(value) {
+    this.value = value;
+    this.left = null;
+    this.right = null;
+  }
+}
+
+function validateBst(tree, left = -Infinity, right = Infinity) {
+  // Write your code here.
+	if (!tree) return true;
+	while(tree){
+		if (tree.value > tree.left.value){
+			left = tree.value;
+			validateBst(tree.left, left, right)
+		} else if (tree.value <= tree.right.value) {
+			right = tree.value;
+			validateBst(tree.right, left, right)
+		} else {
+			return false
+		}
+	}
+	return true
+}
