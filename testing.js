@@ -377,3 +377,23 @@ function postOrderTraverse(tree, array) {
 	}
 	return array
 }
+
+function moveElementToEnd(array, toMove) {
+  // Write your code here.
+	let i = 0;
+	let j = array.length - 1;
+	while (i < j){
+		while (i < j && array[j] == toMove)j--;
+		if (array[i] == toMove)
+			swap(i, j, array);
+			i++;
+		
+	}
+	return array
+}
+
+function swap(i, j, array){
+	const tempi = array[i];
+	array[i] = array[j];
+	array[j] = tempi;
+}
