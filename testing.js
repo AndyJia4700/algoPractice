@@ -404,6 +404,7 @@ function findClosestValueInBst(tree, target) {
 	return findClosestValueInBstHelper(tree, target, tree.value)
 }
 
+
 function findClosestValueInBstHelper(tree, target, closest){
 	let currentNode = tree;
 	while (currentNode !== null){
