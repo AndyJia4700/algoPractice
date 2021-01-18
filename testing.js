@@ -432,3 +432,34 @@ class BST {
   }
 	
 }
+
+
+class BinaryTree {
+  constructor(value) {
+    this.value = value;
+    this.left = null;
+    this.right = null;
+  }
+}
+
+function branchSums(root) {
+  // Write your code here.
+	const sums = [];
+	calculateSums(root, 0, sums)
+	return sums;
+}
+
+function calculateSums(node, runningSum, sums){
+	if (!node) return null;
+	const newRunningSum = runningSum + node.value;
+	if (!node.left && !node.right){
+		sums.push(newRunningSum)
+	}
+	
+	calculateSums(node.left, newRunningSum, sums)
+	calculateSums(node.right, newRunningSum, sums)
+}
+
+// Do not edit the lines below.
+exports.BinaryTree = BinaryTree;
+exports.branchSums = branchSums;
