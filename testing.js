@@ -455,6 +455,7 @@ function calculateSums(node, runningSum, sums){
 	if (!node.left && !node.right){
 		sums.push(newRunningSum)
 
+
 		
 	}
 	calculateSums(node.left, newRunningSum, sums)
