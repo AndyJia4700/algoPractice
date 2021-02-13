@@ -445,6 +445,7 @@ class BinaryTree {
 function branchSums(root) {
   // Write your code here.
 	const sums = [];
+	
 	calculateSums(root, 0, sums)
 	return sums;
 }
