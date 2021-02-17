@@ -3,6 +3,16 @@
 # Assume lowercase and no punctuation. Preserve spaces.
 
 # caesar_cipher(hi,1) = "ij"
+def caesar_cipher(str, index)
+    alph = "abcdefghijklmnopqrstuvwxyz"
+    ans = []
+
+    str.each_char do |char|
+        ans.push(alph[(alph.index(char) + index)%26])
+    end
+
+    return ans.join("")
+end
 
 # p caesar_cipher("zx",1)
 
