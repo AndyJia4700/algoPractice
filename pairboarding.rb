@@ -22,6 +22,8 @@ function longestPalindromicSubstring(string) {
 	for (let i = 0; i < string.length; i++){
 		const odd = getLongestPalindromeFrom
 	}
+
+    
 }
 
 # Write a method, digital_root(num). It should sum the digits of a positive integer. 
