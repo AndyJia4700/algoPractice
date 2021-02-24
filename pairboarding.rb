@@ -17,14 +17,12 @@ end
 # p caesar_cipher("zx",1)
 
 function longestPalindromicSubstring(string) {
-  // Write your code here.
 	let currentLongest = [0, 1]；
 	for (let i = 0; i < string.length; i++){
 		const odd = getLongestPalindromeFrom
 
         
 	}
-
 
 }
 
