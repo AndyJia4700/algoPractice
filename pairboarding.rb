@@ -19,9 +19,7 @@ end
 function longestPalindromicSubstring(string) {
 	let currentLongest = [0, 1]；
 	for (let i = 0; i < string.length; i++){
-		const odd = getLongestPalindromeFrom
-
-        
+		const odd = getLongestPalindromeFrom 
 	}
 
 }
