@@ -475,6 +475,8 @@ function longestPalindromicSubstring(string) {
 		} else if ( string[i-1] == string[i]){
 			currentLongest = GetPalindromicString(string, i-1, i)
 		}
+		debugger
+
 		if (currentLongest.length > longest.length){
 			longest = currentLongest
 		}
@@ -486,10 +488,12 @@ function GetPalindromicString(string, start, end){
 	while ((start >= 0 && end < string.length) && string[start] == string[end]){
 		start--;
 		end++;
-		GetPalindromicString(string, start, end)
+		// GetPalindromicString(string, start, end)
 	}
+
 	return string.slice(start+1, end)
 }
 
-return(longestPalindromicSubstring("z234a5abbbba54a32z"))
+const string = "2345432abbbba5432zzbbababa";
+console.log(longestPalindromicSubstring(string));
 
