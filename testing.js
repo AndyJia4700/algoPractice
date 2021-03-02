@@ -537,3 +537,30 @@ function getLongestPalindromeFrom(string, left, right){
 const string = "2345432abbbba5432zzbbababa";
 console.log(longestPalindromicSubstring(string));
 
+
+function validIPAddresses(string) {
+  // Write your code here.
+	let ipAddressFound = [];
+	for (let i = 0; i < Math.min(string.length, 4); i++){
+		const currentIpAddressParts = ['', '', '', ''];
+		currentIpAddressParts[0] = string.slice(0, i);
+		if (!isValidPart(currentIpAddressParts[0])) continue;
+		
+		for (j = i+1; j < i + Math.min(string.length - i, 4)){
+			
+		}
+		currentIpAddressParts[1]
+		currentIpAddressParts[2]
+		currentIpAddressParts[3]
+	}
+}
+
+function isValidPart(string){
+	const stringAsInt = parseInt(string);
+	if (stringAsInt > 255) return false;
+	return string.length == stringAsInt.toString().length
+}
+
+// Do not edit the line below.
+exports.validIPAddresses = validIPAddresses;
+
