@@ -564,3 +564,54 @@ function isValidPart(string){
 // Do not edit the line below.
 exports.validIPAddresses = validIPAddresses;
 
+
+function runLengthEncoding(string) {
+  // Write your code here.
+	let newString = "";
+	let counter = 1;
+	for (let i = 0; i < string.length; i++){
+		if (string[i] == string[i+1]){
+			counter++;
+			if (counter == 9){
+				newString += "9" + string[i];
+				counter = 0;
+			} else if (counter == 0){
+				
+			}
+		} else {
+				newString += counter + string[i];
+				counter = 1;
+		}
+	}
+	return newString
+}
+
+// Do not edit the line below.
+exports.runLengthEncoding = runLengthEncoding;
+
+function longestPalindromicSubstring(string) {
+  // Write your code here.
+	let currentLongest = [0, 1]
+	for (let i = 1; i < string.length; i++){
+		const odd = checkPalindrome(string, i - 1, i + 1)
+		const even = checkPalindrome(string, i - 1, i)
+		const longer = odd[1] - odd[0] > even[1] - even[0] ? odd : even
+		currentLongest = currentLongest[1] - currentLongest[0] > longer[1] - longer[0] ? currentLongest : longer
+	}
+	return string.slice(currentLongest[0], currentLongest[1])
+	
+}
+
+function checkPalindrome(string, left, right){
+	while (left >= 0 && right < string.length){
+		if (string[left] !== string[right]) break;
+		left--;
+		right++
+	}
+	return [left+1, right]
+}
+
+// Do not edit the line below.
+exports.longestPalindromicSubstring = longestPalindromicSubstring;
+
+
