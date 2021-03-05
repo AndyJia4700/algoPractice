@@ -614,4 +614,59 @@ function checkPalindrome(string, left, right){
 // Do not edit the line below.
 exports.longestPalindromicSubstring = longestPalindromicSubstring;
 
+function generateDocument(characters, document) {
+  // Write your code here.
+	let objChar = {};
+	for (let i = 0; i < characters.length; i++){
+		if (!objChar[characters[i]]){
+			objChar[characters[i]] = 1;
+		} else {
+			objChar[characters[i]]++;
+		}
+	}
+	
+	for (let j = 0; j < document.length; j++){
+		if (!objChar[document[j]]){
+			return false
+		} else {
+			objChar[document[j]]--;
+			if (objChar[document[j]] < 0){
+				return false
+			}
+		}
+	}
+	
+	return true
+	
+}
 
+
+// Do not edit the line below.
+exports.generateDocument = generateDocument;
+
+function longestPalindromicSubstring(string) {
+  // Write your code here.
+	let currentLongest = [0, 1];
+	for (let i = 1; i < string.length; i++){
+		const odd = getLongestPalindromeFrom(string, i-1, i+1);
+		const even = getLongestPalindromeFrom(string, i-1, i);
+		const longest = odd[1] - odd[0] > even[1] - even[0] ? odd : even
+		currentLongest = currentLongest[1] - currentLongest[0] > longest[1] - longest[0] ? currentLongest : longest 
+	}
+	return string.slice(currentLongest[0], currentLongest[1])
+}
+
+function getLongestPalindromeFrom(string, left, right){
+	while (left >= 0 && right < string.length){
+		if (string[left] !== string[right]){
+			break;
+		} else {
+			left--;
+			right++;
+		}
+	}
+	return [left+1, right]
+}
+
+// Do not edit the line below.
+exports.longestPalindromicSubstring = longestPalindromicSubstring;
