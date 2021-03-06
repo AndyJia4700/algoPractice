@@ -687,3 +687,22 @@ function reverseWordsInString(string) {
 
 // Do not edit the line below.
 exports.reverseWordsInString = reverseWordsInString;
+
+
+function reverseWordsInString(string) {
+	const reverseArray = [];
+	let chars = string;
+	let i = 0, start = 0;
+	while (i < chars.length+1){
+		if (chars[i] == " " || !chars[i]){
+			reverseArray.unshift(chars.slice(start, i));
+			start = i + 1
+		}
+		i++;
+	}
+	return reverseArray.join(" ")
+}
+
+// Do not edit the line below.
+exports.reverseWordsInString = reverseWordsInString;
+
