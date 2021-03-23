@@ -844,3 +844,29 @@ function longestPeak(array) {
 
 // Do not edit the line below.
 exports.longestPeak = longestPeak;
+
+function moveElementToEnd(array, toMove) {
+	// Write your code here.
+	let startIdx = 0;
+	let endIdx = array.length - 1;
+	while (startIdx < endIdx) {
+		while (startIdx < endIdx && array[endIdx] == toMove) endIdx--;
+		if (array[startIdx] == toMove) {
+			swapArray(startIdx, endIdx, array);
+			startIdx++;
+		} else {
+			startIdx++;
+		}
+	}
+	return array
+}
+
+function swapArray(i, j, array) {
+	const temp = array[i];
+	array[i] = array[j];
+	array[j] = temp;
+	return array
+}
+
+// Do not edit the line below.
+exports.moveElementToEnd = moveElementToEnd;
