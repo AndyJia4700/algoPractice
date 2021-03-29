@@ -891,3 +891,84 @@ function binaryTreeDiameter(tree) {
 exports.binaryTreeDiameter = binaryTreeDiameter;
 exports.BinaryTree = BinaryTree;
 
+
+function patternMatcher(pattern, string) {
+  // Write your code here.
+	if (pattern.length > string.length) return [];
+	const newPattern = getNewPattern(pattern);
+	const firstYPos = getFirstYPos(newPattern);
+	const count = countPattern(newPattern);
+	const didSwitch = newPattern[0] !== pattern[0];
+	if (count['y'] !== 0){
+		for (let lenOfX = 1; lenOfX < string.length; lenOfX++){
+			const lenOfY = (string.length - count['x'] * lenOfX) / count['y'];
+			const yIdx = firstYPos * lenOfX;
+			const x = string.slice(0, lenOfX);
+			const y = string.slice(yIdx, yIdx + lenOfY);
+			const potentialMatch = newPattern.map(a => a =='x' ? x : y);
+			if (potentialMatch.join('') == string){
+				return didSwitch ? [y, x] : [x, y]
+			}
+		}
+	}else{
+		const lenOfX = string.length / count['x'];
+		const x = string.slice(0, lenOfX);
+		const potentialMatch = newPattern.map(a => a == 'x' ? x : "");
+		if (potentialMatch.join('') == string){
+			return didSwitch ? ['', x] : [x, '']
+		}
+	}
+	
+	return []
+}
+
+function getNewPattern(pattern){
+	if (pattern[0] == 'y'){
+		return pattern.split('').map(a => a == 'y' ? 'x' : 'y');
+	}else{
+		return pattern.split('');
+	}
+}
+
+function getFirstYPos(pattern){
+	for (let i = 0; i < pattern.length; i++){
+		if (pattern[i] == 'y') return i
+	}
+}
+
+function countPattern(pattern){
+	let count = {'x': 0, 'y': 0};
+	for (let i = 0; i < pattern.length; i++){
+		if (pattern[i] == 'x'){
+			count['x'] += 1;
+		} else {
+			count['y'] += 1;
+		}
+	}
+	return count
+}
+
+// Do not edit the line below.
+exports.patternMatcher = patternMatcher;
+
+function longestSubstringWithoutDuplication(string) {
+  // Write your code here.
+	const lastSeen = {};
+	let currentLongest = [0,1];
+	let startIdx = 0;
+	
+	for (let i = 0; i < string.length; i++){
+		const char = string[i];
+		if (char in lastSeen){
+			startIdx = Math.max(startIdx, lastSeen[char]+1);
+		}
+		if (currentLongest[1] - currentLongest[0] < i+1 - startIdx) {
+			currentLongest = [startIdx, i+1]
+		}
+		lastSeen[char] = i;
+	}
+	return string.slice(currentLongest[0], currentLongest[1])
+}
+
+// Do not edit the line below.
+exports.longestSubstringWithoutDuplication = longestSubstringWithoutDuplication;
