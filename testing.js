@@ -972,3 +972,41 @@ function longestSubstringWithoutDuplication(string) {
 
 // Do not edit the line below.
 exports.longestSubstringWithoutDuplication = longestSubstringWithoutDuplication;
+
+
+function underscorifySubstring(string, substring) {
+  // Write your code here.
+	const array = getLocations(string, substring);
+	// return array
+	const collapsedArray = collapsedLocations(array);
+	return array
+	const finalArray = [];
+	for (let i = 0; i < collapsedArray.length; i++){
+		const element = string.slice(collapsedArray[i][0], collapsedArray[i][1]);
+		finalArray.push(element)
+	}
+	return finalArray
+}
+
+function getLocations(string, substring){
+	const array = [];
+	for (let i = 0; i < string.length; i++){
+		if (string.slice(i, i + substring.length) == substring){
+			array.push([i, i + substring.length])
+		}
+	}
+	return array
+}
+
+function collapsedLocations(array){
+	for (let i = 0; i < array.length - 1; i++){
+		if (array[i][1] >= array[i+1][0]){
+			const temp = array[i+1][1]
+			array.splice(i+1,i+1);
+			array[i][1] = temp;
+		} 
+	}
+	return array
+}
+// Do not edit the line below.
+exports.underscorifySubstring = underscorifySubstring;
