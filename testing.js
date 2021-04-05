@@ -1065,3 +1065,12 @@ function removeDuplicatesFromLinkedList(linkedList) {
 // Do not edit the lines below.
 exports.LinkedList = LinkedList;
 exports.removeDuplicatesFromLinkedList = removeDuplicatesFromLinkedList;
+
+
+const a = "xxy"
+const b = "zzw"
+const c = "xzxzyw"
+function interwave(a,b,c){
+	
+}
+
