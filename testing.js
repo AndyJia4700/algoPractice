@@ -1117,4 +1117,70 @@ class MinMaxStack {
 // Do not edit the line below.
 exports.MinMaxStack = MinMaxStack;
 
+function findClosestValueInBst(tree, target) {
+  // Write your code here.
+	return findBst(tree, target, tree.value)
+}
+
+function findBst(tree, target, closest){
+	let currentNode = tree;
+	while (currentNode){
+		const currentDiff = Math.abs(currentNode.value - target);
+		const closestDiff = Math.abs(closest - target);
+		closest = currentDiff < closestDiff ? currentNode.value : closest
+			
+		if (target > currentNode.value){
+			currentNode = currentNode.right;
+		}else if (target < currentNode.value){
+			currentNode = currentNode.left;
+		} else {
+			return currentNode.value
+		}
+	}
+	return closest
+}
+
+// This is the class of the input tree. Do not edit.
+class BST {
+  constructor(value) {
+    this.value = value;
+    this.left = null;
+    this.right = null;
+  }
+}
+
+// Do not edit the line below.
+exports.findClosestValueInBst = findClosestValueInBst;
+
+// This is the class of the input root.
+// Do not edit it.
+class BinaryTree {
+  constructor(value) {
+    this.value = value;
+    this.left = null;
+    this.right = null;
+  }
+}
+
+function branchSums(root) {
+  // Write your code here.
+	const sums = []
+	calculateSums(root, 0, sums)
+	return sums
+}
+
+function calculateSums(node, runningSum, sums){
+	if (!node) return null;
+	let newRunningSum = node.value + runningSum;
+	if (!node.left && !node.right){
+		sums.push(newRunningSum)
+	}
+	calculateSums(node.left, newRunningSum, sums)
+	calculateSums(node.right, newRunningSum, sums)
+}
+
+// Do not edit the lines below.
+exports.BinaryTree = BinaryTree;
+exports.branchSums = branchSums;
+
 
