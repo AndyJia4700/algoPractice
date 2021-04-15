@@ -1256,3 +1256,25 @@ function generateDocument(characters, document) {
 // Do not edit the line below.
 exports.generateDocument = generateDocument;
 
+function findThreeLargestNumbers(array) {
+  // Write your code here.
+	const tempArr = new Array(3).fill(null);
+	
+	for (let i = 0; i < array.length; i++){
+		if (!tempArr[2] || array[i] >= tempArr[2]){
+			tempArr[0] = tempArr[1];
+			tempArr[1] = tempArr[2];
+			tempArr[2] = array[i];
+		} else if (!tempArr[1] || (tempArr[1] <= array[i] && array[i] < tempArr[2])){
+			tempArr[0] = tempArr[1];
+			tempArr[1] = array[i];
+		} else if (!tempArr[0] || (tempArr[0] < array[i] && array[i] < tempArr[1])){
+			tempArr[0] = array[i];
+		} 
+	}
+	return tempArr
+}
+
+// Do not edit the line below.
+exports.findThreeLargestNumbers = findThreeLargestNumbers;
+
