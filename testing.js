@@ -1278,3 +1278,24 @@ function findThreeLargestNumbers(array) {
 // Do not edit the line below.
 exports.findThreeLargestNumbers = findThreeLargestNumbers;
 
+function tandemBicycle(redShirtSpeeds, blueShirtSpeeds, fastest) {
+  // Write your code here.
+	redShirtSpeeds.sort((a,b) => a-b);	
+	blueShirtSpeeds.sort((a,b) => a-b);
+	let totalSpeeds = 0;
+	let left = 0;
+	let right = redShirtSpeeds.length - 1;
+	while (left < redShirtSpeeds.length){
+		if (fastest){
+			totalSpeeds += Math.max(redShirtSpeeds[left], blueShirtSpeeds[right]);
+		} else {
+			totalSpeeds += Math.max(redShirtSpeeds[left], blueShirtSpeeds[left]);
+		}
+		left++;
+		right--;
+	}
+  return totalSpeeds;
+}
+
+// Do not edit the line below.
+exports.tandemBicycle = tandemBicycle;
