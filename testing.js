@@ -1299,3 +1299,33 @@ function tandemBicycle(redShirtSpeeds, blueShirtSpeeds, fastest) {
 
 // Do not edit the line below.
 exports.tandemBicycle = tandemBicycle;
+
+function tournamentWinner(competitions, results) {
+  // Write your code here.
+	let scores = {};
+	for (let i = 0; i < competitions.length; i++){
+		const homeTeam = competitions[i][0];
+		const awayTeam = competitions[i][1];
+		if (results[i] == 0){
+			if (scores[awayTeam]){
+				scores[awayTeam] += 3;
+			}else{
+				scores[awayTeam] = 3
+			}
+			
+		} else {
+			if (scores[homeTeam]){
+				scores[homeTeam] += 3;
+			}else{
+				scores[homeTeam] = 3
+			}
+			
+		}
+	}
+	
+  return Object.keys(scores).reduce((a,b) => scores[a] > scores[b] ? a : b)
+}
+
+// Do not edit the line below.
+exports.tournamentWinner = tournamentWinner;
+
