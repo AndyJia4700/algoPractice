@@ -1329,3 +1329,52 @@ function tournamentWinner(competitions, results) {
 // Do not edit the line below.
 exports.tournamentWinner = tournamentWinner;
 
+function runLengthEncoding(string) {
+  // Write your code here.
+	let tempStr = "";
+	let counter = 1;
+	for (let i = 0; i < string.length; i++){
+		const currentChar = string[i];
+		const nextChar = string[i+1];
+		if ( currentChar !== nextChar || counter == 9 ){
+			tempStr += counter + currentChar
+			counter = 0;
+		}
+		counter++;
+	}
+	return tempStr
+}
+
+// Do not edit the line below.
+exports.runLengthEncoding = runLengthEncoding;
+
+function generateDocument(characters, document) {
+  // Write your code here.
+	let objChar = {};
+	for (let i = 0; i < characters.length; i++){
+		if (!objChar[characters[i]]){
+			objChar[characters[i]] = 1;
+		} else {
+			objChar[characters[i]]++;
+		}
+	}
+	
+	for (let j = 0; j < document.length; j++){
+		if (!objChar[document[j]]){
+			return false
+		} else {
+			objChar[document[j]]--;
+			if (objChar[document[j]] < 0){
+				return false
+			}
+		}
+	}
+	
+	return true
+	
+}
+
+
+// Do not edit the line below.
+exports.generateDocument = generateDocument;
+
