@@ -1378,3 +1378,34 @@ function generateDocument(characters, document) {
 // Do not edit the line below.
 exports.generateDocument = generateDocument;
 
+function smallestDifference(arrayOne, arrayTwo) {
+  // Write your code here.
+	arrayOne.sort((a,b)=>a-b);
+	arrayTwo.sort((a,b)=>a-b);
+	let i = 0; let j = 0; let current = Infinity; let small = Infinity; let pair = [];
+	while (i < arrayOne.length && j < arrayTwo.length){
+		let first = arrayOne[i];
+		let second = arrayTwo[j];
+		
+		if (first < second){
+			current = second - first;
+			i++;
+		} else if (first > second){
+			current = first - second;
+			j++;
+		} else {
+			return [first, second]
+		}
+		
+		if (current < small){
+			small = current;
+			pair = [first, second]
+		}
+	}
+	return pair;
+	
+}
+
+// Do not edit the line below.
+exports.smallestDifference = smallestDifference;
+
