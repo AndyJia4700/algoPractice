@@ -1409,3 +1409,22 @@ function smallestDifference(arrayOne, arrayTwo) {
 // Do not edit the line below.
 exports.smallestDifference = smallestDifference;
 
+function moveElementToEnd(array, toMove) {
+  // Write your code here.
+	let left = 0; 
+	let right = array.length - 1;
+	while (left < right){
+		while (left < right && array[right] == toMove) right--;
+		if (array[left] == toMove){
+			const temp = array[left];
+			array[left] = array[right];
+			array[right] = temp
+		}
+		left++;
+	}
+	return array
+}
+
+// Do not edit the line below.
+exports.moveElementToEnd = moveElementToEnd;
+
