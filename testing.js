@@ -1461,3 +1461,30 @@ function spiralFill(array, startRow, endRow, startCol, endCol, result){
 // Do not edit the line below.
 exports.spiralTraverse = spiralTraverse;
 
+function longestPeak(array) {
+  // Write your code here.
+	let longestPeakLength = 0;
+	// let peakIdx = [];
+	for (let i = 1; i < array.length - 1; i++){
+		const isPeak = array[i] > array[i-1] && array[i] > array[i+1];
+		if (isPeak){
+			let peakStart = i - 1;
+			let peakEnd = i + 1;
+			while (array[peakStart] > array[peakStart - 1]) peakStart--;
+			while (array[peakEnd] > array[peakEnd + 1]) peakEnd++;
+			const currentPeakLength = peakEnd - peakStart + 1;
+			if (currentPeakLength > longestPeakLength)longestPeakLength = currentPeakLength
+			// if (currentPeakLength > longestPeakLength){
+			// 	longestPeakLength = currentPeakLength;
+			// 	peakIdx = [peakStart, peakEnd+1]
+			// }
+			
+		}
+	}
+	// return array.slice(peakIdx[0], peakIdx[1])
+	return longestPeakLength
+}
+
+// Do not edit the line below.
+exports.longestPeak = longestPeak;
+
