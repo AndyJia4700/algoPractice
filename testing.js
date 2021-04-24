@@ -1509,3 +1509,22 @@ function arrayOfProducts(array) {
 
 // Do not edit the line below.
 exports.arrayOfProducts = arrayOfProducts;
+
+function mergeOverlappingIntervals(array) {
+  // Write your code here.
+	const sortedArray = array.sort((a,b)=>a[0] - b[0]);
+	const result = [sortedArray[0]];
+	
+	for (let i = 1; i < array.length; i++){
+		const nextInterval = array[i];
+		const lastResult = result[result.length - 1];
+		
+		if (lastResult[1] >= nextInterval[0]){
+			lastResult[1] = Math.max(lastResult[1], nextInterval[1]);
+		} else {
+			result.push(nextInterval);
+		}
+	}
+	return result
+	
+}
