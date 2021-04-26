@@ -1590,13 +1590,10 @@ class BST {
 				parentNode = currentNode;
 				currentNode = currentNode.right;
 			}else{
-				if (currentNode.left && currentNode.right){
-					
-				}else if()
-			}
+				
 		}
-    return this;
-  }
+    	return this;
+  	}
 }
 
 // Do not edit the line below.
