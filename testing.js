@@ -1528,3 +1528,77 @@ function mergeOverlappingIntervals(array) {
 	return result
 	
 }
+
+// Do not edit the class below except for
+// the insert, contains, and remove methods.
+// Feel free to add new properties and methods
+// to the class.
+class BST {
+  constructor(value) {
+    this.value = value;
+    this.left = null;
+    this.right = null;
+  }
+
+  insert(value) {
+    // Write your code here.
+    // Do not edit the return statement of this method.
+		let currentNode = this;
+		while (currentNode){
+			if(currentNode.value > value){
+				if (!currentNode.left){
+					currentNode.left = new BST(value);
+					return this
+				}else{
+					currentNode = currentNode.left;
+				}
+			}else{
+				if (!currentNode.right){
+					currentNode.right = new BST(value);
+					return this
+				}else{
+					currentNode = currentNode.right;
+				}
+			}
+		}
+  }
+
+  contains(value) {
+    // Write your code here.
+		let currentNode = this;
+		while (currentNode){
+			if (currentNode.value > value){
+				currentNode = currentNode.left
+			}else if (currentNode.value < value){
+				currentNode = currentNode.right
+			}else{
+				return true
+			}
+		}
+		return false
+  }
+
+  remove(value, parentNode = null) {
+    // Write your code here.
+    // Do not edit the return statement of this method.
+		let currentNode = this;
+		while(currentNode){
+			if (currentNode.value > value){
+				parentNode = currentNode;
+				currentNode = currentNode.left;
+			}else if (currentNode.value < value){
+				parentNode = currentNode;
+				currentNode = currentNode.right;
+			}else{
+				if (currentNode.left && currentNode.right){
+					
+				}else if()
+			}
+		}
+    return this;
+  }
+}
+
+// Do not edit the line below.
+exports.BST = BST;
+
