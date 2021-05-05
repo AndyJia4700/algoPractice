@@ -1744,7 +1744,7 @@ class TreeInfo {
 function reconstructBst(preOrderTraversalValues) {
   // Write your code here.
 	const treeInfo = new TreeInfo(0);
-	return reconstructBst(-Infinity, Infinity, preOrderTraversalValues, treeInfo);
+	return reconstructBstFromRange(-Infinity, Infinity, preOrderTraversalValues, treeInfo);
 }
 
 function reconstructBstFromRange(lowerBound, upperBound, preOrderTraversalValues, currentSubtreeInfo){
