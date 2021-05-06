@@ -1762,3 +1762,41 @@ function reconstructBstFromRange(lowerBound, upperBound, preOrderTraversalValues
 // Do not edit the lines below.
 exports.BST = BST;
 exports.reconstructBst = reconstructBst;
+
+// This is an input class. Do not edit.
+class BinaryTree {
+  constructor(value) {
+    this.value = value;
+    this.left = null;
+    this.right = null;
+  }
+}
+
+function binaryTreeDiameter(tree) {
+  // Write your code here.
+  return getTreeInfo(tree).diameter;
+}
+
+function getTreeInfo(tree){
+	if (!tree) return new TreeInfo(0, 0);
+	
+	const leftTreeInfo = getTreeInfo(tree.left);
+	const rightTreeInfo = getTreeInfo(tree.right);
+	
+	const longestPathThroughRoot = leftTreeInfo.height + rightTreeInfo.height;
+	const maxDiameterSoFar = Math.max(leftTreeInfo.diameter, rightTreeInfo.diameter);
+	const currentDiameter = Math.max(longestPathThroughRoot, maxDiameterSoFar);
+	const currentHeight = Math.max(leftTreeInfo.height, rightTreeInfo.height) + 1;
+	
+	return new TreeInfo(currentDiameter, currentHeight)
+}
+
+class TreeInfo{
+	constructor(diameter, height){
+		this.diameter = diameter;
+		this.height = height;
+	}
+}
+// Do not edit the line below.
+exports.binaryTreeDiameter = binaryTreeDiameter;
+exports.BinaryTree = BinaryTree;
