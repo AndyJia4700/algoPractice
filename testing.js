@@ -1800,3 +1800,29 @@ class TreeInfo{
 // Do not edit the line below.
 exports.binaryTreeDiameter = binaryTreeDiameter;
 exports.BinaryTree = BinaryTree;
+
+function spiralTraverse(array) {
+  // Write your code here.
+	const result = [];
+	spiralFill();
+	return result;
+}
+
+function spiralFill(array, startRow, endRow, startCol, endCol, result){
+	if (startRow > endRow || startCol > endCol)return;
+	for (let col = startCol; col <= endCol; col++){
+		result.push(array[startRow][col]);
+	}
+	for (let row = startRow; row <= endRow; row++){
+		result.push(array[row][endCol]);
+	}
+	for (let col = endCol - 1; col >= startCol; col--){
+		if (startRow == endRow) break;
+		result.push(array[endRow][col]);
+	}
+	for 
+}
+
+// Do not edit the line below.
+exports.spiralTraverse = spiralTraverse;
+
