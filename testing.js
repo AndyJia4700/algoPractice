@@ -1866,3 +1866,31 @@ class BST {
 
 // Do not edit the line below.
 exports.minHeightBst = minHeightBst;
+
+
+// This is an input class. Do not edit.
+class BST {
+  constructor(value) {
+    this.value = value;
+    this.left = null;
+    this.right = null;
+  }
+}
+
+function findKthLargestValueInBst(tree, k) {
+  // Write your code here.
+  const sortedNodeValues = [];
+	inOrderTraverse(tree, sortedNodeValues);
+	return sortedNodeValues[sortedNodeValues.length - k]
+}
+
+function inOrderTraverse(node, sortedNodeValues){
+	if (!node) return null;
+	inOrderTraverse(node.left, sortedNodeValues);
+	sortedNodeValues.push(node.value);
+	inOrderTraverse(node.right, sortedNodeValues);
+}
+
+// Do not edit the lines below.
+exports.BST = BST;
+exports.findKthLargestValueInBst = findKthLargestValueInBst;
