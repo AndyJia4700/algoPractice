@@ -1922,8 +1922,34 @@ function findKthLargestValueInBst(tree, k) {
 function reversedInOrderTraverse(node, k, treeInfo){
 	if (!node || treeInfo.visited >= k) return null;
 	reversedInOrderTraverse(node.right, k, treeInfo);
-	if (treeInfo.visited
-		 )
+}
+
+// Do not edit the lines below.
+exports.BST = BST;
+exports.findKthLargestValueInBst = findKthLargestValueInBst;
+
+
+// This is an input class. Do not edit.
+class BST {
+  constructor(value) {
+    this.value = value;
+    this.left = null;
+    this.right = null;
+  }
+}
+
+function findKthLargestValueInBst(tree, k) {
+  // Write your code here.
+  const sortedNodeValues = [];
+	inOrderTraverse(tree, sortedNodeValues);
+	return sortedNodeValues[sortedNodeValues.length - k]
+}
+
+function inOrderTraverse(node, sortedNodeValues){
+	if (!node) return null;
+	inOrderTraverse(node.left, sortedNodeValues);
+	sortedNodeValues.push(node.value);
+	inOrderTraverse(node.right, sortedNodeValues);
 }
 
 // Do not edit the lines below.
